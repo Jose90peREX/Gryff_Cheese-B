@@ -1,0 +1,245 @@
+#include <iostream>
+#include "Insertion Sort.h"
+#include "Selection Sort.h"
+#include "MergeSort.h"
+#include "BubbleSort.h"
+#include "quickSort.h"
+#include "HeapSort.h"
+#include "CountingSort.h"
+#include "RadixSort.h"
+#include <chrono>
+using namespace std;
+
+void filling_Arrays(int sorted[], int unsorted[], int half[], int size) {
+    int value = 1;
+    for (int i = 0; i < size; ++i) {
+        sorted[i] = value;
+        value++;
+    }
+
+    value = value - 1;
+
+    for (int j = 0; j < size; ++j) {
+        unsorted[j] = value;
+        value--;
+    }
+
+    value = value + 1;
+    for (int k = 0; k < (size / 2); ++k) {
+        half[k] = value;
+        value++;
+    }
+
+    value = (value - 1) * 2;
+    for (int k = (size / 2); k < size; ++k) {
+        half[k] = value;
+        value--;
+    }
+}
+
+void print_Arr(int arr[], int size) {
+    for (int i = 0; i < size; ++i) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int size = 0;
+    int option = -1;
+    Heap test;
+    cout << "Enter the size of the array being tested?" << endl;
+    cin >> size;
+
+    int left = 0;
+    int right = size - 1;
+    
+
+    int* sorted_Arr = new int[size];
+    int* half_Arr = new int[size];
+    int* unsorted_Arr = new int[size];
+    filling_Arrays(sorted_Arr, unsorted_Arr, half_Arr, size);
+    int right2 = sizeof(sorted_Arr) / sizeof(sorted_Arr[0]);
+    int right3 = sizeof(unsorted_Arr) / sizeof(unsorted_Arr[0]);
+    int right4 = sizeof(half_Arr) / sizeof(half_Arr[0]);
+
+    cout << "\n--------Test--------\n";
+    cout << "1: Insertion Sort" << endl;
+    cout << "2: Selection Sort" << endl;
+    cout << "3: Bubble Sort" << endl;
+    cout << "4: Merge Sort" << endl;
+    cout << "5: QuickSort" << endl;
+    cout << "6: HeapSort" << endl;
+    cout << "7: Counting Sort" << endl;
+    cout << "8: Radix Sort" << endl;
+    cin >> option;
+
+    if (option == 1) {
+        cout << "Testing Insertion Sort." << endl;
+        auto start1 = chrono::steady_clock::now();
+        insertionSort(sorted_Arr, size);
+        auto stop1 = chrono::steady_clock::now();
+        auto time1 = chrono::duration_cast<chrono::nanoseconds>(stop1 - start1);
+        cout << "Time taken (sorted): " << time1.count() << " nanoseconds" << endl;
+
+        auto start2 = chrono::steady_clock::now();
+        insertionSort(half_Arr, size);
+        auto stop2 = chrono::steady_clock::now();
+        auto time2 = chrono::duration_cast<chrono::nanoseconds>(stop2 - start2);
+        cout << "Time taken (half): " << time2.count() << " nanoseconds" << endl;
+
+        auto start3 = chrono::steady_clock::now();
+        insertionSort(unsorted_Arr, size);
+        auto stop3 = chrono::steady_clock::now();
+        auto time3 = chrono::duration_cast<chrono::nanoseconds>(stop3 - start3);
+        cout << "Time taken (unsorted): " << time3.count() << " nanoseconds" << endl;
+    } 
+    else if (option == 2) {
+        cout << "Testing Selection Sort." << endl;
+        auto start4 = chrono::steady_clock::now();
+        selectionSort(sorted_Arr, size);
+        auto stop4 = chrono::steady_clock::now();
+        auto time4 = chrono::duration_cast<chrono::nanoseconds>(stop4 - start4);
+        cout << "Time taken (sorted): " << time4.count() << " nanoseconds" << endl;
+
+        auto start5 = chrono::steady_clock::now();
+        selectionSort(half_Arr, size);
+        auto stop5 = chrono::steady_clock::now();
+        auto time5 = chrono::duration_cast<chrono::nanoseconds>(stop5 - start5);
+        cout << "Time taken (half): " << time5.count() << " nanoseconds" << endl;
+
+        auto start6 = chrono::steady_clock::now();
+        selectionSort(unsorted_Arr, size);
+        auto stop6 = chrono::steady_clock::now();
+        auto time6 = chrono::duration_cast<chrono::nanoseconds>(stop6 - start6);
+        cout << "Time taken (unsorted): " << time6.count() << " nanoseconds" << endl;
+    } 
+    else if (option == 3) {
+        cout << "Testing Bubble Sort." << endl;
+        auto start7 = chrono::steady_clock::now();
+        BubbleSort(sorted_Arr, size);
+        auto stop7 = chrono::steady_clock::now();
+        auto time7 = chrono::duration_cast<chrono::nanoseconds>(stop7 - start7);
+        cout << "Time taken (sorted): " << time7.count() << " nanoseconds" << endl;
+
+        auto start8 = chrono::steady_clock::now();
+        BubbleSort(half_Arr, size);
+        auto stop8 = chrono::steady_clock::now();
+        auto time8 = chrono::duration_cast<chrono::nanoseconds>(stop8 - start8);
+        cout << "Time taken (half): " << time8.count() << " nanoseconds" << endl;
+
+        auto start9 = chrono::steady_clock::now();
+        BubbleSort(unsorted_Arr, size);
+        auto stop9 = chrono::steady_clock::now();
+        auto time9 = chrono::duration_cast<chrono::nanoseconds>(stop9 - start9);
+        cout << "Time taken (unsorted): " << time9.count() << " nanoseconds" << endl;
+    } 
+    else if (option == 4) {
+        cout << "Testing Merge Sort." << endl;
+        auto start10 = chrono::steady_clock::now();
+        mergeSort(sorted_Arr, left, right);
+        auto stop10 = chrono::steady_clock::now();
+        auto time10 = chrono::duration_cast<chrono::nanoseconds>(stop10 - start10);
+        cout << "Time taken (sorted): " << time10.count() << " nanoseconds" << endl;
+
+        auto start11 = chrono::steady_clock::now();
+        mergeSort(half_Arr, left, right);
+        auto stop11 = chrono::steady_clock::now();
+        auto time11 = chrono::duration_cast<chrono::nanoseconds>(stop11 - start11);
+        cout << "Time taken (half): " << time11.count() << " nanoseconds" << endl;
+
+        auto start12 = chrono::steady_clock::now();
+        mergeSort(unsorted_Arr, left, right);
+        auto stop12 = chrono::steady_clock::now();
+        auto time12 = chrono::duration_cast<chrono::nanoseconds>(stop12 - start12);
+        cout << "Time taken (unsorted): " << time12.count() << " nanoseconds" << endl;
+    }
+    else if (option == 5) {
+        cout << "Testing QuickSort." << endl;
+        auto start13 = chrono::steady_clock::now();
+        quickSort(sorted_Arr, left, right2-1);
+        auto stop13 = chrono::steady_clock::now();
+        auto time13 = chrono::duration_cast<chrono::nanoseconds>(stop13 - start13);
+        cout << "Time taken (sorted): " << time13.count() << " nanoseconds" << endl;
+
+        auto start14 = chrono::steady_clock::now();
+        quickSort(half_Arr, left, right3-1);
+        auto stop14 = chrono::steady_clock::now();
+        auto time14 = chrono::duration_cast<chrono::nanoseconds>(stop14 - start14);
+        cout << "Time taken (half): " << time14.count() << " nanoseconds" << endl;
+
+        auto start15 = chrono::steady_clock::now();
+        quickSort(unsorted_Arr, left, right4-1);
+        auto stop15 = chrono::steady_clock::now();
+        auto time15 = chrono::duration_cast<chrono::nanoseconds>(stop15 - start15);
+        cout << "Time taken (unsorted): " << time15.count() << " nanoseconds" << endl;
+    }
+    else if (option == 6) {
+        cout << "Testing HeapSort." << endl;
+        auto start16 = chrono::steady_clock::now();
+        test.ascendingHeapSort(sorted_Arr, size);
+        auto stop16 = chrono::steady_clock::now();
+        auto time16 = chrono::duration_cast<chrono::nanoseconds>(stop16 - start16);
+        cout << "Time taken (sorted): " << time16.count() << " nanoseconds" << endl;
+
+        auto start17 = chrono::steady_clock::now();
+        test.ascendingHeapSort(half_Arr, size);
+        auto stop17 = chrono::steady_clock::now();
+        auto time17 = chrono::duration_cast<chrono::nanoseconds>(stop17 - start17);
+        cout << "Time taken (half): " << time17.count() << " nanoseconds" << endl;
+
+        auto start18 = chrono::steady_clock::now();
+        test.ascendingHeapSort(unsorted_Arr, size);
+        auto stop18 = chrono::steady_clock::now();
+        auto time18 = chrono::duration_cast<chrono::nanoseconds>(stop18 - start18);
+        cout << "Time taken (unsorted): " << time18.count() << " nanoseconds" << endl;
+    }
+    else if (option == 7) {
+        cout << "Testing Counting Sort." << endl;
+        auto start19 = chrono::steady_clock::now();
+        countSort(sorted_Arr, size);
+        auto stop19 = chrono::steady_clock::now();
+        auto time19 = chrono::duration_cast<chrono::nanoseconds>(stop19 - start19);
+        cout << "Time taken (sorted): " << time19.count() << " nanoseconds" << endl;
+
+        auto start20 = chrono::steady_clock::now();
+        countSort(half_Arr, size);
+        auto stop20 = chrono::steady_clock::now();
+        auto time20 = chrono::duration_cast<chrono::nanoseconds>(stop20 - start20);
+        cout << "Time taken (half): " << time20.count() << " nanoseconds" << endl;
+
+        auto start21 = chrono::steady_clock::now();
+        countSort(unsorted_Arr, size);
+        auto stop21 = chrono::steady_clock::now();
+        auto time21 = chrono::duration_cast<chrono::nanoseconds>(stop21 - start21);
+        cout << "Time taken (unsorted): " << time21.count() << " nanoseconds" << endl;
+    }
+    else if(option == 8) {
+        cout << "Testing Radix Sort." << endl;
+        auto start22 = chrono::steady_clock::now();
+        radixSort(sorted_Arr, size);
+        auto stop22 = chrono::steady_clock::now();
+        auto time22 = chrono::duration_cast<chrono::nanoseconds>(stop22 - start22);
+        cout << "Time taken (sorted): " << time22.count() << " nanoseconds" << endl;
+
+        auto start23 = chrono::steady_clock::now();
+        radixSort(half_Arr, size);
+        auto stop23 = chrono::steady_clock::now();
+        auto time23 = chrono::duration_cast<chrono::nanoseconds>(stop23 - start23);
+        cout << "Time taken (half): " << time23.count() << " nanoseconds" << endl;
+
+        auto start24 = chrono::steady_clock::now();
+        radixSort(unsorted_Arr, size);
+        auto stop24 = chrono::steady_clock::now();
+        auto time24 = chrono::duration_cast<chrono::nanoseconds>(stop24 - start24);
+        cout << "Time taken (unsorted): " << time24.count() << " nanoseconds" << endl;
+    }
+
+    /*
+    print_Arr(sorted_Arr, size);
+    print_Arr(half_Arr, size);
+    print_Arr(unsorted_Arr, size);
+    */
+
+    return 0;
+}
