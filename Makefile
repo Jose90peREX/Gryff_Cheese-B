@@ -1,5 +1,5 @@
 # source for our main program
-SRC := csv_file.cpp main.cpp BubbleSort_test.cpp
+SRC := csv_file.cpp main.cpp
 
 # source for our test program
 TEST_SRC := $(shell find *_test.cpp)
@@ -17,4 +17,5 @@ optimized:
 
 .PHONY: test
 test:
-	g++ -std=c++20 -O3 -I gtest/include -I gtest $(GTEST_SRC) $(TEST_SRC) -o input_tester
+	g++ -std=c++20 -O3 -I gtest/include -I gtest $(GTEST_SRC) $(TEST_SRC) -o input_tester \
+		-lgtest -lgtest_main -lpthread

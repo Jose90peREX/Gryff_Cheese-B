@@ -3,7 +3,7 @@
 using namespace std;
 
 
-void BubbleSort(int arr[], int n) {
+void BubbleSort(int* arr, int n) {
     int i;
     int j;
     int temp;
