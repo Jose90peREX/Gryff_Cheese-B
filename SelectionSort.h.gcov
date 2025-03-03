@@ -1,0 +1,22 @@
+        -:    0:Source:SelectionSort.h
+        -:    1:#pragma once
+        -:    2:#include <iostream>
+        -:    3:using namespace std;
+        -:    4:
+        -:    5:/*Function that performs selecting sort on a given array*/
+        8:    6:void selectionSort(int arr[], int size) {
+    79992:    7:    for (int i = 0; i < size - 1; i++) {        //for loop to iterate through the array
+    79984:    8:        int min = i;                            //sets min variable to current element index
+399959992:    9:        for (int j = i + 1; j < size; j++) {    //for loop to itetated through the remaining array
+399880008:   10:            if (arr[j] < arr[min]) {            //compares current min element with remaining array elements to find the smallest element index
+   622510:   11:                min = j;
+        -:   12:            }
+        -:   13:        }
+    79984:   14:        int temp = 0;
+    79984:   15:        if (min != i) {                         //if the current element index was found not to hold the smallest element then it swaps its element with the smallest element found
+    79912:   16:            temp = arr[i];
+    79912:   17:            arr[i] = arr[min];
+    79912:   18:            arr[min] = temp;
+        -:   19:        }
+        -:   20:    }
+        8:   21:}
