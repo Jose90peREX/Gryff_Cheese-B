@@ -1,5 +1,5 @@
 # source for our main program
-SRC := csv_file.cpp main.cpp
+SRC := csv_file.cpp main.cpp BubbleSort_test.cpp
 
 # source for our test program
 TEST_SRC := $(shell find *_test.cpp)
