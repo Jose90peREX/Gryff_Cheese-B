@@ -2,7 +2,5 @@
 a.out
 tests.out
 input_tester
-a-main.gcno
-a-main.gcda
-a-csv_file.gcda
-a-csv_file.gcno
+*.gcno
+*.gcda
