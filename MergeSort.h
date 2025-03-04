@@ -3,7 +3,7 @@
 using namespace std;
 
 /*Function that merges two sorted subarrays back into one*/
-void merge(int arr[], int left, int mid, int right) {
+void merge(int* arr, int left, int mid, int right) {
     int n1 = mid - left + 1;    //calculating the size of the first subarray
     int n2 = right - mid;       //calculating the size of the second subarray
 
@@ -47,7 +47,7 @@ void merge(int arr[], int left, int mid, int right) {
 }
 
 /*Function that performs mergesort on a given array*/
-void mergeSort(int arr[], int left, int right) {
+void mergeSort(int* arr, int left, int right) {
     if (left < right) {                     //checks thats the given array is not empty
         int mid = (left + right) / 2;       //finding the mid point of the array
         mergeSort(arr, left, mid);          //recursively calling itself for the first half of the array
