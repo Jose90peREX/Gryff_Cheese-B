@@ -1,0 +1,61 @@
+        -:    0:Source:MergeSort.h
+        -:    0:Graph:input_tester-merge_sort_test.gcno
+        -:    0:Data:input_tester-merge_sort_test.gcda
+        -:    0:Runs:1
+        -:    1:#pragma once
+        -:    2:#include <iostream>
+        -:    3:using namespace std;
+        -:    4:
+        -:    5:/*Function that merges two sorted subarrays back into one*/
+        4:    6:void merge(int* arr, int left, int mid, int right) {
+        4:    7:    int n1 = mid - left + 1;    //calculating the size of the first subarray
+        4:    8:    int n2 = right - mid;       //calculating the size of the second subarray
+        -:    9:
+        -:   10:    //creating two temporary subarrays
+       4*:   11:    int* leftArr = new int[n1];
+       4*:   12:    int* rightArr = new int[n2];
+        -:   13:
+        -:   14:    //using for loops to fill up each temporary subarray
+       11:   15:    for (int i = 0; i < n1; i++) {
+        7:   16:        leftArr[i] = arr[left + i];
+        -:   17:    }
+        9:   18:    for (int j = 0; j < n2; j++) {
+        5:   19:        rightArr[j] = arr[mid + 1 + j];
+        -:   20:    }
+        -:   21:
+        -:   22:    int indL = 0;   //initial index for the first subarray
+        -:   23:    int indR = 0;   //initial index for the first subarray
+        -:   24:
+        -:   25:    //using a for loop to sort and merge the two subarrays back into the given array
+       16:   26:    for (int k = left; k <= right; k++) {
+       12:   27:        if (indL < n1 && indR < n2) {               //checks to see if either of the subarrays have been fully iterated through
+        8:   28:            if (leftArr[indL] <= rightArr[indR]) {  //if not sorts the values back into the orignial array
+        5:   29:                arr[k] = leftArr[indL];
+        5:   30:                indL++;
+        -:   31:            }
+        -:   32:            else {
+        3:   33:                arr[k] = rightArr[indR];
+        3:   34:                indR++;
+        -:   35:            }
+        -:   36:        }
+        4:   37:        else if (indL < n1) {                        //fills the orignial array with the remaining elements in the left subarray
+        2:   38:            arr[k] = leftArr[indL];
+        2:   39:            indL++;
+        -:   40:        }
+        -:   41:        else {                                       //fills the orignial array with the remaining elements in the right subarray
+        2:   42:            arr[k] = rightArr[indR];
+        2:   43:            indR++;
+        -:   44:        }
+        -:   45:    }
+        -:   46:
+        4:   47:}
+        -:   48:
+        -:   49:/*Function that performs mergesort on a given array*/
+        9:   50:void mergeSort(int* arr, int left, int right) {
+        9:   51:    if (left < right) {                     //checks thats the given array is not empty
+        4:   52:        int mid = (left + right) / 2;       //finding the mid point of the array
+        4:   53:        mergeSort(arr, left, mid);          //recursively calling itself for the first half of the array
+        4:   54:        mergeSort(arr, mid + 1, right);     //recursively calling itself for the second hald of the array
+        4:   55:        merge(arr, left, mid, right);       //calling the merge function
+        -:   56:    }
+        9:   57:}

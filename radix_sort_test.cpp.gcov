@@ -1,0 +1,17 @@
+        -:    0:Source:radix_sort_test.cpp
+        -:    0:Graph:input_tester-radix_sort_test.gcno
+        -:    0:Data:input_tester-radix_sort_test.gcda
+        -:    0:Runs:1
+        -:    1:#include "gtest/include/gtest/gtest.h"
+        -:    2:
+        -:    3:#include <vector>
+        -:    4:#include "RadixSort.h"
+        -:    5:
+       3*:    6:TEST(RadixSort, UnsortedVector) {
+        1:    7:    std::vector<int> unsorted = {2, 1, 5, 3, 4};
+        1:    8:    std::vector<int> sorted = {1, 2, 3, 4, 5};
+        -:    9:    
+        1:   10:    radixSort(unsorted.data(), unsorted.size());
+        -:   11:
+       1*:   12:    ASSERT_EQ(unsorted, sorted);
+        -:   13:}

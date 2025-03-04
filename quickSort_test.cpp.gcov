@@ -1,0 +1,191 @@
+        -:    0:Source:quickSort_test.cpp
+        -:    0:Graph:input_tester-quickSort_test.gcno
+        -:    0:Data:input_tester-quickSort_test.gcda
+        -:    0:Runs:1
+        -:    1:#include "gtest/include/gtest/gtest.h"
+        -:    2:#include "quickSort.h"
+        -:    3:#include <vector>
+        -:    4:#include <random>
+        -:    5:#include <numeric>
+        -:    6:#include <algorithm>
+        -:    7:using namespace std;
+        -:    8:
+        -:    9://Unsorted
+       3*:   10:TEST(QuickSortTest, UnsortedQuick) {
+        1:   11:    vector<int> vec(1000000); //Vector sized 1,000,000
+        -:   12:    iota(vec.begin(), vec.end(), 1);
+        1:   13:    vector<int> sorted_vec = vec; //Copy vector "sorted_vec" to another vector, "vec" to retain 
+        -:   14:
+        1:   15:    std::random_device rd;
+        -:   16:    unsigned seed = rd();
+        -:   17:    std::mt19937 r(seed);
+        1:   18:    shuffle(vec.begin(), vec.end(), r);
+        -:   19:
+        1:   20:    quickSort(vec.data(), 0, vec.size()-1, 0);
+       1*:   21:    ASSERT_EQ(vec, sorted_vec);
+        -:   22:}
+------------------
+_ZN32QuickSortTest_UnsortedQuick_TestD0Ev:
+        1:   10:TEST(QuickSortTest, UnsortedQuick) {
+------------------
+_ZN32QuickSortTest_UnsortedQuick_TestD2Ev:
+    #####:   10:TEST(QuickSortTest, UnsortedQuick) {
+------------------
+_ZN32QuickSortTest_UnsortedQuick_Test8TestBodyEv:
+        1:   10:TEST(QuickSortTest, UnsortedQuick) {
+        1:   11:    vector<int> vec(1000000); //Vector sized 1,000,000
+        -:   12:    iota(vec.begin(), vec.end(), 1);
+        1:   13:    vector<int> sorted_vec = vec; //Copy vector "sorted_vec" to another vector, "vec" to retain 
+        -:   14:
+        1:   15:    std::random_device rd;
+        -:   16:    unsigned seed = rd();
+        -:   17:    std::mt19937 r(seed);
+        1:   18:    shuffle(vec.begin(), vec.end(), r);
+        -:   19:
+        1:   20:    quickSort(vec.data(), 0, vec.size()-1, 0);
+       1*:   21:    ASSERT_EQ(vec, sorted_vec);
+        -:   22:}
+------------------
+        -:   23:
+        -:   24://Reversed
+       3*:   25:TEST(QuickSortTest, ReversedQuick) {
+        1:   26:   vector<int> vec(1000000);
+        -:   27:   iota(vec.begin(), vec.end(), 1);
+        1:   28:   vector<int> sorted_vec = vec;
+        -:   29:
+        -:   30:   reverse(vec.begin(), vec.end());
+        1:   31:   quickSort(vec.data(), 0, vec.size()-1, 0);
+       1*:   32:   ASSERT_EQ(vec, sorted_vec); 
+        -:   33:}
+------------------
+_ZN32QuickSortTest_ReversedQuick_TestD0Ev:
+        1:   25:TEST(QuickSortTest, ReversedQuick) {
+------------------
+_ZN32QuickSortTest_ReversedQuick_TestD2Ev:
+    #####:   25:TEST(QuickSortTest, ReversedQuick) {
+------------------
+_ZN32QuickSortTest_ReversedQuick_Test8TestBodyEv:
+        1:   25:TEST(QuickSortTest, ReversedQuick) {
+        1:   26:   vector<int> vec(1000000);
+        -:   27:   iota(vec.begin(), vec.end(), 1);
+        1:   28:   vector<int> sorted_vec = vec;
+        -:   29:
+        -:   30:   reverse(vec.begin(), vec.end());
+        1:   31:   quickSort(vec.data(), 0, vec.size()-1, 0);
+       1*:   32:   ASSERT_EQ(vec, sorted_vec); 
+        -:   33:}
+------------------
+        -:   34:
+        -:   35://Sorted
+       3*:   36:TEST(QuickSortTest, SortedQuick) {
+        1:   37:    vector<int> vec(1000000);
+        -:   38:    iota(vec.begin(), vec.end(), 1);
+        1:   39:    vector<int> sorted_vec = vec;
+        1:   40:    quickSort(vec.data(), 0, vec.size()-1, 0);
+       1*:   41:    ASSERT_EQ(vec, sorted_vec);
+        -:   42:}
+------------------
+_ZN30QuickSortTest_SortedQuick_TestD0Ev:
+        1:   36:TEST(QuickSortTest, SortedQuick) {
+------------------
+_ZN30QuickSortTest_SortedQuick_TestD2Ev:
+    #####:   36:TEST(QuickSortTest, SortedQuick) {
+------------------
+_ZN30QuickSortTest_SortedQuick_Test8TestBodyEv:
+        1:   36:TEST(QuickSortTest, SortedQuick) {
+        1:   37:    vector<int> vec(1000000);
+        -:   38:    iota(vec.begin(), vec.end(), 1);
+        1:   39:    vector<int> sorted_vec = vec;
+        1:   40:    quickSort(vec.data(), 0, vec.size()-1, 0);
+       1*:   41:    ASSERT_EQ(vec, sorted_vec);
+        -:   42:}
+------------------
+        -:   43:
+        -:   44://Small Vector
+       3*:   45:TEST(QuickSortTest, SmallQuick) {
+        1:   46:    vector<int> vec(10);
+        -:   47:    iota(vec.begin(), vec.end(), 1);
+        1:   48:    vector<int> sorted_vec = vec;
+        -:   49:
+        1:   50:    std::random_device rd;
+        -:   51:    unsigned seed = rd();
+        -:   52:    std::mt19937 r(seed);
+        -:   53:
+        1:   54:    shuffle(vec.begin(), vec.end(), r);
+        1:   55:    quickSort(vec.data(), 0, vec.size()-1, 0);
+       1*:   56:    ASSERT_EQ(vec, sorted_vec);
+        -:   57:}
+------------------
+_ZN29QuickSortTest_SmallQuick_TestD0Ev:
+        1:   45:TEST(QuickSortTest, SmallQuick) {
+------------------
+_ZN29QuickSortTest_SmallQuick_TestD2Ev:
+    #####:   45:TEST(QuickSortTest, SmallQuick) {
+------------------
+_ZN29QuickSortTest_SmallQuick_Test8TestBodyEv:
+        1:   45:TEST(QuickSortTest, SmallQuick) {
+        1:   46:    vector<int> vec(10);
+        -:   47:    iota(vec.begin(), vec.end(), 1);
+        1:   48:    vector<int> sorted_vec = vec;
+        -:   49:
+        1:   50:    std::random_device rd;
+        -:   51:    unsigned seed = rd();
+        -:   52:    std::mt19937 r(seed);
+        -:   53:
+        1:   54:    shuffle(vec.begin(), vec.end(), r);
+        1:   55:    quickSort(vec.data(), 0, vec.size()-1, 0);
+       1*:   56:    ASSERT_EQ(vec, sorted_vec);
+        -:   57:}
+------------------
+        -:   58:
+        -:   59://Negative Vector
+       3*:   60:TEST(QuickSortTest, NegativeQuick) {
+        1:   61:    vector<int> vec(1000000);
+  1000001:   62:    for (int i = 0; i < vec.size(); i++) { vec[i] = i - 500000; }
+        1:   63:    vector<int> sorted_vec = vec;
+        1:   64:    sort(sorted_vec.begin(), sorted_vec.end());
+        -:   65:
+        1:   66:    std::random_device rd;
+        -:   67:    unsigned seed = rd();
+        -:   68:    std::mt19937 r(seed);
+        1:   69:    shuffle(vec.begin(), vec.end(), r);
+        1:   70:    quickSort(vec.data(), 0, vec.size()-1, 0);
+       1*:   71:    ASSERT_EQ(vec, sorted_vec);
+        -:   72:}
+------------------
+_ZN32QuickSortTest_NegativeQuick_TestD0Ev:
+        1:   60:TEST(QuickSortTest, NegativeQuick) {
+------------------
+_ZN32QuickSortTest_NegativeQuick_TestD2Ev:
+    #####:   60:TEST(QuickSortTest, NegativeQuick) {
+------------------
+_ZN32QuickSortTest_NegativeQuick_Test8TestBodyEv:
+        1:   60:TEST(QuickSortTest, NegativeQuick) {
+        1:   61:    vector<int> vec(1000000);
+  1000001:   62:    for (int i = 0; i < vec.size(); i++) { vec[i] = i - 500000; }
+        1:   63:    vector<int> sorted_vec = vec;
+        1:   64:    sort(sorted_vec.begin(), sorted_vec.end());
+        -:   65:
+        1:   66:    std::random_device rd;
+        -:   67:    unsigned seed = rd();
+        -:   68:    std::mt19937 r(seed);
+        1:   69:    shuffle(vec.begin(), vec.end(), r);
+        1:   70:    quickSort(vec.data(), 0, vec.size()-1, 0);
+       1*:   71:    ASSERT_EQ(vec, sorted_vec);
+        -:   72:}
+------------------
+        -:   73:
+        -:   74://Partially Sorted
+       3*:   75:TEST(QuickSortTest, PartialQuick) {
+        1:   76:    vector<int> vec(1000000);
+        -:   77:    iota(vec.begin(), vec.end(), 1);
+        1:   78:    vector<int> sorted_vec = vec;
+        -:   79:    
+        1:   80:    std::random_device rd;
+        -:   81:    unsigned seed = rd();
+        -:   82:    std::mt19937 r(seed);
+        1:   83:    shuffle(vec.begin(), vec.begin() + vec.size()/2, r); //Shuffles the first half
+        1:   84:    quickSort(vec.data(), 0, vec.size()-1, 0);
+       1*:   85:    ASSERT_EQ(vec, sorted_vec);
+        -:   86:}
+        -:   87:

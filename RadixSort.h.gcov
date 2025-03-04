@@ -1,0 +1,48 @@
+        -:    0:Source:RadixSort.h
+        -:    0:Graph:input_tester-radix_sort_test.gcno
+        -:    0:Data:input_tester-radix_sort_test.gcda
+        -:    0:Runs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:#include <iostream>
+        -:    4:using namespace std;
+        -:    5:
+        -:    6:/*Function that performs counting sort on a given array but for each decimal place of the given elements*/
+        1:    7:void radix_count(int* arr, int size, int decP) {
+        1:    8:    int count[10] = { 0 };                  //creating a temporary array of size 10
+        -:    9:
+        6:   10:    for (int i = 0; i < size; i++) {        //count the frequency of each value in the given decimal place 
+        5:   11:        count[(arr[i] / decP) % 10]++;      //put these value into their respective indexes in the count array
+        -:   12:    }
+        -:   13:
+       10:   14:    for (int i = 1; i < 10; i++) {          //Store the cummulative count of the count array
+        9:   15:        count[i] += count[i - 1];
+        -:   16:    }
+        -:   17:
+       1*:   18:    int* output = new int[size];            //creating a temporary output array to hold the sorted values
+        6:   19:    for (int i = size - 1; i >= 0; i--) {   //Find the index of each element of the original array in count array, and place the elements in output array
+        5:   20:        output[count[(arr[i] / decP) % 10] - 1] = arr[i];
+        5:   21:        count[(arr[i] / decP) % 10]--;
+        -:   22:    }
+        -:   23:
+        6:   24:    for (int i = 0; i < size; i++) {        //Copy the sorted elements back into the original array                                                      
+        5:   25:        arr[i] = output[i];
+        -:   26:    }
+        1:   27:}
+        -:   28:
+        -:   29:/*Function that performs radixsort on a given array*/
+        1:   30:void radixSort(int* arr, int size) {
+        1:   31:    int max = arr[0];
+        -:   32:
+        -:   33:    //finding maximum
+        5:   34:    for (int i = 1; i < size; i++) {
+        4:   35:        if (arr[i] > max) {
+        -:   36:            max = arr[i];
+        -:   37:        }
+        -:   38:    }
+        -:   39:
+        -:   40:    //using a for loop to call the radix's counting sort method to sort the array for each decimal place of its elements
+        2:   41:    for (int decP = 1; (max / decP) > 0; decP *= 10) {
+        1:   42:        radix_count(arr, size, decP);
+        -:   43:    }
+        1:   44:}

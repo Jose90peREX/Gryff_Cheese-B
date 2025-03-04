@@ -1,0 +1,102 @@
+        -:    0:Source:CountingSort_test.cpp
+        -:    0:Graph:input_tester-CountingSort_test.gcno
+        -:    0:Data:input_tester-CountingSort_test.gcda
+        -:    0:Runs:1
+        -:    1:#include "gtest/include/gtest/gtest.h" 
+        -:    2:#include "CountingSort.h"
+        -:    3:#include <vector> 
+        -:    4:using namespace std;
+        -:    5:
+       3*:    6:TEST(CountingSortedTest, IdenticalNumbersVector) {
+        1:    7:	vector<int> v = {1, 1, 1, 1};
+        1:    8:	vector<int> expected = {1, 1, 1, 1};
+        1:    9:	countSort(v.data(), v.size());
+       1*:   10:	ASSERT_EQ(v, expected);
+        -:   11: }
+------------------
+_ZN46CountingSortedTest_IdenticalNumbersVector_TestD0Ev:
+        1:    6:TEST(CountingSortedTest, IdenticalNumbersVector) {
+------------------
+_ZN46CountingSortedTest_IdenticalNumbersVector_TestD2Ev:
+    #####:    6:TEST(CountingSortedTest, IdenticalNumbersVector) {
+------------------
+_ZN46CountingSortedTest_IdenticalNumbersVector_Test8TestBodyEv:
+        1:    6:TEST(CountingSortedTest, IdenticalNumbersVector) {
+        1:    7:	vector<int> v = {1, 1, 1, 1};
+        1:    8:	vector<int> expected = {1, 1, 1, 1};
+        1:    9:	countSort(v.data(), v.size());
+       1*:   10:	ASSERT_EQ(v, expected);
+        -:   11: }
+------------------
+        -:   12:
+       3*:   13:TEST(CountingSortedTest, SmallRangeVector) {
+        1:   14:	vector<int> v = {1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 3, 3, 1};
+        1:   15:	vector<int> expected = {1, 1, 1, 1, 1, 2, 2, 2, 3, 3 ,3, 3, 3, 3};
+        1:   16:	countSort(v.data(), v.size());
+       1*:   17:	ASSERT_EQ(v, expected);
+        -:   18: }
+------------------
+_ZN40CountingSortedTest_SmallRangeVector_TestD0Ev:
+        1:   13:TEST(CountingSortedTest, SmallRangeVector) {
+------------------
+_ZN40CountingSortedTest_SmallRangeVector_TestD2Ev:
+    #####:   13:TEST(CountingSortedTest, SmallRangeVector) {
+------------------
+_ZN40CountingSortedTest_SmallRangeVector_Test8TestBodyEv:
+        1:   13:TEST(CountingSortedTest, SmallRangeVector) {
+        1:   14:	vector<int> v = {1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 3, 3, 1};
+        1:   15:	vector<int> expected = {1, 1, 1, 1, 1, 2, 2, 2, 3, 3 ,3, 3, 3, 3};
+        1:   16:	countSort(v.data(), v.size());
+       1*:   17:	ASSERT_EQ(v, expected);
+        -:   18: }
+------------------
+        -:   19:
+       3*:   20:TEST(CountingSortedTest, LargeRangeVector) {
+        1:   21:	vector<int> v = {2, 3, 54, 32, 13, 213, 1, 233};
+        1:   22:	vector<int> expected = {1, 2, 3, 13, 32, 54, 213, 233};
+        1:   23:    countSort(v.data(), v.size());
+       1*:   24:	ASSERT_EQ(v, expected);
+        -:   25: }
+------------------
+_ZN40CountingSortedTest_LargeRangeVector_TestD0Ev:
+        1:   20:TEST(CountingSortedTest, LargeRangeVector) {
+------------------
+_ZN40CountingSortedTest_LargeRangeVector_TestD2Ev:
+    #####:   20:TEST(CountingSortedTest, LargeRangeVector) {
+------------------
+_ZN40CountingSortedTest_LargeRangeVector_Test8TestBodyEv:
+        1:   20:TEST(CountingSortedTest, LargeRangeVector) {
+        1:   21:	vector<int> v = {2, 3, 54, 32, 13, 213, 1, 233};
+        1:   22:	vector<int> expected = {1, 2, 3, 13, 32, 54, 213, 233};
+        1:   23:    countSort(v.data(), v.size());
+       1*:   24:	ASSERT_EQ(v, expected);
+        -:   25: }
+------------------
+        -:   26:
+       3*:   27:TEST(CountingSortedTest, OneNumberVector) {
+        1:   28:    vector<int> v = {3};
+        1:   29:    vector<int> expected = {3};
+        1:   30:    countSort(v.data(), v.size());
+       1*:   31:	ASSERT_EQ(v, expected);
+        -:   32: }
+------------------
+_ZN39CountingSortedTest_OneNumberVector_TestD0Ev:
+        1:   27:TEST(CountingSortedTest, OneNumberVector) {
+------------------
+_ZN39CountingSortedTest_OneNumberVector_TestD2Ev:
+    #####:   27:TEST(CountingSortedTest, OneNumberVector) {
+------------------
+_ZN39CountingSortedTest_OneNumberVector_Test8TestBodyEv:
+        1:   27:TEST(CountingSortedTest, OneNumberVector) {
+        1:   28:    vector<int> v = {3};
+        1:   29:    vector<int> expected = {3};
+        1:   30:    countSort(v.data(), v.size());
+       1*:   31:	ASSERT_EQ(v, expected);
+        -:   32: }
+------------------
+       3*:   33:TEST(CountingSortedTest, EmptyVector) {
+        1:   34:	vector<int> v = {};
+        1:   35:	vector<int> expected = {};
+        1:   36:	countSort(v.data(), v.size());
+       1*:   37:	ASSERT_EQ(v, expected);
+        -:   38: }

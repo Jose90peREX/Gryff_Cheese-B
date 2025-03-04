@@ -1,0 +1,22 @@
+        -:    0:Source:InsertionSort.h
+        -:    0:Graph:input_tester-insertionSort_HeapSort_test.gcno
+        -:    0:Data:input_tester-insertionSort_HeapSort_test.gcda
+        -:    0:Runs:1
+        -:    1:#pragma once
+        -:    2:#include <iostream>
+        -:    3:using namespace std;
+        -:    4:
+        -:    5:/*Function that performs insertion sort on a given array*/
+    #####:    6:void insertionSort(int arr[], int n) {
+        -:    7:    int i, key, j;
+    #####:    8:    for (i = 1; i < n; i++) {               //iterateing through the array starting from the second element
+    #####:    9:        key = arr[i];                       //storing the current element to be compared
+    #####:   10:        j = i - 1;                          //setting j to previous element index
+        -:   11:
+    #####:   12:        while (j >= 0 && arr[j] > key) {    //checking if j is >= to 0 and if the element at that index is greater then key
+    #####:   13:            arr[j + 1] = arr[j];            //if so it shifts the element at j right one
+    #####:   14:            j = j - 1;                      //and moves j to the index of the previous element
+        -:   15:        }
+    #####:   16:        arr[j + 1] = key;                   //places key in the correct sorted position
+        -:   17:    }
+    #####:   18:}

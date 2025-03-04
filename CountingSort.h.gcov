@@ -1,0 +1,51 @@
+        -:    0:Source:CountingSort.h
+        -:    0:Graph:input_tester-CountingSort_test.gcno
+        -:    0:Data:input_tester-CountingSort_test.gcda
+        -:    0:Runs:1
+        -:    1:#pragma once
+        -:    2:#include <iostream>
+        -:    3:using namespace std;
+        -:    4:
+        -:    5:/*Function that performs counting sort on a given array*/
+        5:    6:void countSort(int arr[], int size) {
+        5:    7:	if (size == 0) {
+        -:    8:		return;
+        -:    9:	}
+        4:   10:    int max = arr[0];
+        -:   11:
+        -:   12:    //finding maximum
+       27:   13:    for (int i = 1; i < size; i++) {
+       23:   14:        if (arr[i] > max) {
+        -:   15:            max = arr[i];
+        -:   16:        }
+        -:   17:    }
+        -:   18:
+       4*:   19:    int* count = new int[max + 1];
+        -:   20:    //filling count array w/ 0
+      248:   21:    for (int i = 0; i <= max; i++) {
+      244:   22:        count[i] = 0;
+        -:   23:    }
+        -:   24:
+        -:   25:    //Mapping each element of inputArray[] as an index of countArray[] array
+       31:   26:    for (int i = 0; i < size; i++) {
+       27:   27:        count[arr[i]]++;
+        -:   28:    }
+        -:   29:
+        -:   30:    //Store the cummulative count of the count array
+      244:   31:    for (int i = 1; i <= max; i++) {
+      240:   32:        count[i] += count[i - 1];
+        -:   33:    }
+        -:   34:
+       4*:   35:    int* output = new int[size];
+        -:   36:
+        -:   37:    //Find the index of each element of the original array in count array, and place the elements in output array
+       31:   38:    for (int i = size - 1; i >= 0; i--) {
+       27:   39:        output[count[arr[i]] - 1] = arr[i];
+       27:   40:        count[arr[i]]--;
+        -:   41:    }
+        -:   42:
+        -:   43:    //Copy the sorted elements back into the original array
+       31:   44:    for (int i = 0; i < size; i++) {
+       27:   45:        arr[i] = output[i];
+        -:   46:    }
+        -:   47:}

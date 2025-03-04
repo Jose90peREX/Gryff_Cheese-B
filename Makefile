@@ -17,5 +17,14 @@ optimized:
 
 .PHONY: test
 test:
-	g++ -std=c++20 -O3 -I gtest/include -I gtest $(GTEST_SRC) $(TEST_SRC) -o input_tester \
+	g++ -std=c++20 -fprofile-arcs -ftest-coverage  -O3 -I gtest/include -I gtest $(GTEST_SRC) $(TEST_SRC) -o input_tester \
 		-lgtest -lgtest_main -lpthread
+
+.PHONY: clean-coverage
+clean-coverage:
+	rm -f *.gcda *.gcno *.gcov
+
+.PHONY: coverage
+coverage: clean-coverage test
+	./input_tester
+	gcov -r $(TEST_SRC)

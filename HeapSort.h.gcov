@@ -1,0 +1,91 @@
+        -:    0:Source:HeapSort.h
+        -:    0:Graph:input_tester-insertionSort_HeapSort_test.gcno
+        -:    0:Data:input_tester-insertionSort_HeapSort_test.gcda
+        -:    0:Runs:1
+        -:    1:#pragma once
+        -:    2:#include <iostream>
+        -:    3:
+        -:    4:using namespace std;
+        -:    5:
+        -:    6:class Heap {
+        -:    7:private:
+        -:    8:
+        -:    9:public:
+        -:   10:    int* Arr;
+        1:   11:    Heap() {
+        1:   12:        Arr = new int[0];
+        -:   13:    }
+        -:   14:
+        -:   15:    void printArray(int*Arr, int n) {
+        -:   16:        for (int i = 0; i < n; i++) {
+        -:   17:            cout << Arr[i] << " ";
+        -:   18:        }
+        -:   19:        cout << endl;
+        -:   20:    }
+        -:   21:
+        -:   22:    //Max heap
+        -:   23:    void modifyValMax(int*Arr, int n, int i, int val) { //Modify value 
+        -:   24:        Arr[i] = val;
+        -:   25:        for (i; i >= 0; i--) {
+        -:   26:            if (Arr[i] > Arr[i / 2]) {
+        -:   27:                swap(Arr[i], Arr[i / 2]);
+        -:   28:                i = i / 2;
+        -:   29:            }
+        -:   30:        }
+        -:   31:    }
+        -:   32:
+        -:   33:    void insert_value_maxHeap(int*Arr, int val, int& n) { //Adds value at the end of array and calls max_heapify
+        -:   34:        n = n + 1;
+        -:   35:        Arr[n - 1] = val;
+        -:   36:        int i = n - 1;
+        -:   37:        for (i; i >= 0; i--) {
+        -:   38:            if (Arr[i] > Arr[(i / 2)]) {
+        -:   39:                swap(Arr[i], Arr[i / 2]);
+        -:   40:                i = (i / 2) + 1;
+        -:   41:            }
+        -:   42:        }
+        -:   43:    }
+        -:   44:
+       15:   45:    void max_heapify(int*Arr, int i, int n) { //Maintains the max heap property
+       33:   46:        int lNode = (2 * i) + 1;
+       33:   47:        int rNode = (2 * i) + 2;
+        -:   48:        int largest = i;
+        -:   49:
+       33:   50:        if (lNode < n && Arr[lNode] > Arr[i]) {
+        -:   51:            largest = lNode;
+        -:   52:        }
+       33:   53:        if (rNode < n && Arr[rNode] > Arr[largest]) {
+        -:   54:            largest = rNode;
+        -:   55:        }
+       33:   56:        if (largest != i) {
+       18:   57:            swap(Arr[i], Arr[largest]);
+        -:   58:            max_heapify(Arr, largest, n);
+        -:   59:        }
+       15:   60:    }
+        -:   61:
+        -:   62:    int extract_maximum(int*Arr, int& n) { //Return the maximum element in heap and swap last element with first element
+        -:   63:        buildMaxHeap(Arr, n);
+        -:   64:
+        -:   65:        int max = Arr[0];
+        -:   66:        Arr[0] = Arr[n - 1];
+        -:   67:        n = n - 1;
+        -:   68:        max_heapify(Arr, 0, n);
+        -:   69:        return max;
+        -:   70:    }
+        -:   71:
+        1:   72:    void ascendingHeapSort(int*Arr, int n) { //Prints the array in ascending 
+        -:   73:        buildMaxHeap(Arr, n);
+        -:   74:
+       11:   75:        for (int i = n - 1; i >= 0; i--) {
+       10:   76:            swap(Arr[0], Arr[i]);
+       10:   77:            max_heapify(Arr, 0, i);
+        -:   78:        }
+        1:   79:    }
+        -:   80:
+        -:   81:    void buildMaxHeap(int*Arr, int n) { //Heapifies entire list
+        1:   82:        int startidx = (n / 2) - 1;
+        6:   83:        for (int i = startidx; i >= 0; i--) {
+        5:   84:            max_heapify(Arr, i, n);
+        -:   85:        }
+        -:   86:    }
+        -:   87:};

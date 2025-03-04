@@ -1,0 +1,187 @@
+        -:    0:Source:SelectionSort_test.cpp
+        -:    0:Graph:input_tester-SelectionSort_test.gcno
+        -:    0:Data:input_tester-SelectionSort_test.gcda
+        -:    0:Runs:1
+        -:    1:#include "gtest/include/gtest/gtest.h"
+        -:    2:#include "SelectionSort.h"
+        -:    3:#include <vector>
+        -:    4:#include <random>
+        -:    5:#include <numeric> 
+        -:    6:#include <algorithm>
+        -:    7:using namespace std;
+        -:    8:
+        -:    9://Sorted
+       3*:   10:TEST(SelectionTest, SortedSelection) {
+        1:   11:    vector<int> vec(1000);
+        -:   12:    iota(vec.begin(), vec.end(), 1);
+        1:   13:    vector<int> sorted_vec = vec;
+        1:   14:    selectionSort(vec.data(), vec.size());
+       1*:   15:    ASSERT_EQ(vec, sorted_vec);
+        -:   16:}
+------------------
+_ZN34SelectionTest_SortedSelection_TestD0Ev:
+        1:   10:TEST(SelectionTest, SortedSelection) {
+------------------
+_ZN34SelectionTest_SortedSelection_TestD2Ev:
+    #####:   10:TEST(SelectionTest, SortedSelection) {
+------------------
+_ZN34SelectionTest_SortedSelection_Test8TestBodyEv:
+        1:   10:TEST(SelectionTest, SortedSelection) {
+        1:   11:    vector<int> vec(1000);
+        -:   12:    iota(vec.begin(), vec.end(), 1);
+        1:   13:    vector<int> sorted_vec = vec;
+        1:   14:    selectionSort(vec.data(), vec.size());
+       1*:   15:    ASSERT_EQ(vec, sorted_vec);
+        -:   16:}
+------------------
+        -:   17:
+        -:   18://Unsorted
+       3*:   19:TEST(SelectionTest, UnsortedSelection) {
+        1:   20:    vector<int> vec(1000);
+        -:   21:    iota(vec.begin(), vec.end(), 1);
+        1:   22:    vector<int> sorted_vec = vec;
+        -:   23:
+        1:   24:    std::random_device rd;
+        -:   25:    unsigned seed = rd();
+        -:   26:    std::mt19937 r(seed);
+        1:   27:    shuffle(vec.begin(), vec.end(), r);
+        -:   28:
+        1:   29:    selectionSort(vec.data(), vec.size());
+       1*:   30:    ASSERT_EQ(vec, sorted_vec);
+        -:   31:}
+------------------
+_ZN36SelectionTest_UnsortedSelection_TestD0Ev:
+        1:   19:TEST(SelectionTest, UnsortedSelection) {
+------------------
+_ZN36SelectionTest_UnsortedSelection_TestD2Ev:
+    #####:   19:TEST(SelectionTest, UnsortedSelection) {
+------------------
+_ZN36SelectionTest_UnsortedSelection_Test8TestBodyEv:
+        1:   19:TEST(SelectionTest, UnsortedSelection) {
+        1:   20:    vector<int> vec(1000);
+        -:   21:    iota(vec.begin(), vec.end(), 1);
+        1:   22:    vector<int> sorted_vec = vec;
+        -:   23:
+        1:   24:    std::random_device rd;
+        -:   25:    unsigned seed = rd();
+        -:   26:    std::mt19937 r(seed);
+        1:   27:    shuffle(vec.begin(), vec.end(), r);
+        -:   28:
+        1:   29:    selectionSort(vec.data(), vec.size());
+       1*:   30:    ASSERT_EQ(vec, sorted_vec);
+        -:   31:}
+------------------
+        -:   32:
+        -:   33:
+        -:   34://Reversed
+       3*:   35:TEST(SelectionTest, ReversedSelection) {
+        1:   36:   vector<int> vec(1000);
+        -:   37:   iota(vec.begin(), vec.end(), 1);
+        1:   38:   vector<int> sorted_vec = vec;
+        -:   39:   reverse(vec.begin(), vec.end());
+        1:   40:   selectionSort(vec.data(), vec.size());
+       1*:   41:   ASSERT_EQ(vec, sorted_vec);
+        -:   42:}
+------------------
+_ZN36SelectionTest_ReversedSelection_TestD0Ev:
+        1:   35:TEST(SelectionTest, ReversedSelection) {
+------------------
+_ZN36SelectionTest_ReversedSelection_TestD2Ev:
+    #####:   35:TEST(SelectionTest, ReversedSelection) {
+------------------
+_ZN36SelectionTest_ReversedSelection_Test8TestBodyEv:
+        1:   35:TEST(SelectionTest, ReversedSelection) {
+        1:   36:   vector<int> vec(1000);
+        -:   37:   iota(vec.begin(), vec.end(), 1);
+        1:   38:   vector<int> sorted_vec = vec;
+        -:   39:   reverse(vec.begin(), vec.end());
+        1:   40:   selectionSort(vec.data(), vec.size());
+       1*:   41:   ASSERT_EQ(vec, sorted_vec);
+        -:   42:}
+------------------
+        -:   43:
+        -:   44://Small Vector
+       3*:   45:TEST(SelectionTest, SmallSelection) {
+        1:   46:   vector<int> vec(10);
+        -:   47:   iota(vec.begin(), vec.end(), 1);
+        1:   48:   vector<int> sorted_vec = vec;
+        1:   49:   std::random_device rd;
+        -:   50:   unsigned seed = rd();
+        -:   51:   std::mt19937 r(seed);
+        1:   52:   shuffle(vec.begin(), vec.end(), r);
+        1:   53:   selectionSort(vec.data(), vec.size());
+       1*:   54:   ASSERT_EQ(vec, sorted_vec);
+        -:   55:}
+------------------
+_ZN33SelectionTest_SmallSelection_TestD0Ev:
+        1:   45:TEST(SelectionTest, SmallSelection) {
+------------------
+_ZN33SelectionTest_SmallSelection_TestD2Ev:
+    #####:   45:TEST(SelectionTest, SmallSelection) {
+------------------
+_ZN33SelectionTest_SmallSelection_Test8TestBodyEv:
+        1:   45:TEST(SelectionTest, SmallSelection) {
+        1:   46:   vector<int> vec(10);
+        -:   47:   iota(vec.begin(), vec.end(), 1);
+        1:   48:   vector<int> sorted_vec = vec;
+        1:   49:   std::random_device rd;
+        -:   50:   unsigned seed = rd();
+        -:   51:   std::mt19937 r(seed);
+        1:   52:   shuffle(vec.begin(), vec.end(), r);
+        1:   53:   selectionSort(vec.data(), vec.size());
+       1*:   54:   ASSERT_EQ(vec, sorted_vec);
+        -:   55:}
+------------------
+        -:   56:
+        -:   57://Negative Vector
+       3*:   58:TEST(SelectionTest, NegativeSelection) {
+        1:   59:    vector<int> vec(1000);
+     1001:   60:    for (int i = 0; i < vec.size(); i++) { vec[i] = i - 500; }
+        1:   61:    vector<int> sorted_vec = vec;
+        1:   62:    sort(sorted_vec.begin(), sorted_vec.end());
+        -:   63:
+        1:   64:    std::random_device rd;
+        -:   65:    unsigned seed = rd();
+        -:   66:    std::mt19937 r(seed);
+        1:   67:    shuffle(vec.begin(), vec.end(), r);
+        1:   68:    selectionSort(vec.data(), vec.size());
+       1*:   69:    ASSERT_EQ(vec, sorted_vec);
+        -:   70:}
+------------------
+_ZN36SelectionTest_NegativeSelection_TestD0Ev:
+        1:   58:TEST(SelectionTest, NegativeSelection) {
+------------------
+_ZN36SelectionTest_NegativeSelection_TestD2Ev:
+    #####:   58:TEST(SelectionTest, NegativeSelection) {
+------------------
+_ZN36SelectionTest_NegativeSelection_Test8TestBodyEv:
+        1:   58:TEST(SelectionTest, NegativeSelection) {
+        1:   59:    vector<int> vec(1000);
+     1001:   60:    for (int i = 0; i < vec.size(); i++) { vec[i] = i - 500; }
+        1:   61:    vector<int> sorted_vec = vec;
+        1:   62:    sort(sorted_vec.begin(), sorted_vec.end());
+        -:   63:
+        1:   64:    std::random_device rd;
+        -:   65:    unsigned seed = rd();
+        -:   66:    std::mt19937 r(seed);
+        1:   67:    shuffle(vec.begin(), vec.end(), r);
+        1:   68:    selectionSort(vec.data(), vec.size());
+       1*:   69:    ASSERT_EQ(vec, sorted_vec);
+        -:   70:}
+------------------
+        -:   71:
+        -:   72://Partially Sorted
+       3*:   73:TEST(SelectionTest, PartialSelection) {
+        1:   74:    vector<int> vec(1000);
+        -:   75:    iota(vec.begin(), vec.end(), 1);
+        1:   76:    vector<int> sorted_vec = vec;
+        -:   77:    
+        1:   78:    std::random_device rd;
+        -:   79:    unsigned seed = rd();
+        -:   80:    std::mt19937 r(seed);
+        -:   81:
+        1:   82:    shuffle(vec.begin(), vec.begin() + vec.size()/2, r);
+        1:   83:    selectionSort(vec.data(), vec.size());
+       1*:   84:    ASSERT_EQ(vec, sorted_vec);
+        -:   85:}
+        -:   86:
