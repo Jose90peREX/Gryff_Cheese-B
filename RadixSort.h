@@ -1,9 +1,10 @@
 #pragma once
+
 #include <iostream>
 using namespace std;
 
 /*Function that performs counting sort on a given array but for each decimal place of the given elements*/
-void radix_count(int arr[], int size, int decP) {
+void radix_count(int* arr, int size, int decP) {
     int count[10] = { 0 };                  //creating a temporary array of size 10
 
     for (int i = 0; i < size; i++) {        //count the frequency of each value in the given decimal place 
@@ -26,7 +27,7 @@ void radix_count(int arr[], int size, int decP) {
 }
 
 /*Function that performs radixsort on a given array*/
-void radixSort(int arr[], int size) {
+void radixSort(int* arr, int size) {
     int max = arr[0];
 
     //finding maximum
