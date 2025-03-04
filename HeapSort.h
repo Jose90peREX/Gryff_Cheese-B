@@ -12,7 +12,7 @@ public:
         Arr = new int[0];
     }
 
-    void printArray(int Arr[], int n) {
+    void printArray(int*Arr, int n) {
         for (int i = 0; i < n; i++) {
             cout << Arr[i] << " ";
         }
@@ -20,7 +20,7 @@ public:
     }
 
     //Max heap
-    void modifyValMax(int Arr[], int n, int i, int val) { //Modify value 
+    void modifyValMax(int*Arr, int n, int i, int val) { //Modify value 
         Arr[i] = val;
         for (i; i >= 0; i--) {
             if (Arr[i] > Arr[i / 2]) {
@@ -30,7 +30,7 @@ public:
         }
     }
 
-    void insert_value_maxHeap(int Arr[], int val, int& n) { //Adds value at the end of array and calls max_heapify
+    void insert_value_maxHeap(int*Arr, int val, int& n) { //Adds value at the end of array and calls max_heapify
         n = n + 1;
         Arr[n - 1] = val;
         int i = n - 1;
@@ -42,7 +42,7 @@ public:
         }
     }
 
-    void max_heapify(int Arr[], int i, int n) { //Maintains the max heap property
+    void max_heapify(int*Arr, int i, int n) { //Maintains the max heap property
         int lNode = (2 * i) + 1;
         int rNode = (2 * i) + 2;
         int largest = i;
@@ -59,7 +59,7 @@ public:
         }
     }
 
-    int extract_maximum(int Arr[], int& n) { //Return the maximum element in heap and swap last element with first element
+    int extract_maximum(int*Arr, int& n) { //Return the maximum element in heap and swap last element with first element
         buildMaxHeap(Arr, n);
 
         int max = Arr[0];
@@ -69,7 +69,7 @@ public:
         return max;
     }
 
-    void ascendingHeapSort(int Arr[], int n) { //Prints the array in ascending 
+    void ascendingHeapSort(int*Arr, int n) { //Prints the array in ascending 
         buildMaxHeap(Arr, n);
 
         for (int i = n - 1; i >= 0; i--) {
@@ -78,7 +78,7 @@ public:
         }
     }
 
-    void buildMaxHeap(int Arr[], int n) { //Heapifies entire list
+    void buildMaxHeap(int*Arr, int n) { //Heapifies entire list
         int startidx = (n / 2) - 1;
         for (int i = startidx; i >= 0; i--) {
             max_heapify(Arr, i, n);
