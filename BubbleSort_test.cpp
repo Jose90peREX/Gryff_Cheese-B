@@ -3,7 +3,7 @@
    #include <vector>
    using namespace std;
      
-     TEST(UnsortedVector, BubbleSortedTest)
+    TEST(UnsortedVector, BubbleSortedTest) {
 
        vector<int> v = {2, 1, 5, 3, 4};
         BubbleSort(v);   
