@@ -7,7 +7,7 @@
 using namespace std;
 
 //Unsorted
-TEST(UnsortedQuick, QuickSortTest) {
+TEST(QuickSortTest, UnsortedQuick) {
     vector<int> vec(1000000); //Vector sized 1,000,000
     iota(vec.begin(), vec.end(), 1);
     vector<int> sorted_vec = vec; //Copy vector "sorted_vec" to another vector, "vec" to retain 
@@ -22,7 +22,7 @@ TEST(UnsortedQuick, QuickSortTest) {
 }
 
 //Reversed
-TEST(ReversedQuick, QuickSortTest) {
+TEST(QuickSortTest, ReversedQuick) {
    vector<int> vec(1000000);
    iota(vec.begin(), vec.end(), 1);
    vector<int> sorted_vec = vec;
@@ -33,7 +33,7 @@ TEST(ReversedQuick, QuickSortTest) {
 }
 
 //Sorted
-TEST(SortedQuick, QuickSortTest) {
+TEST(QuickSortTest, SortedQuick) {
     vector<int> vec(1000000);
     iota(vec.begin(), vec.end(), 1);
     vector<int> sorted_vec = vec;
@@ -42,7 +42,7 @@ TEST(SortedQuick, QuickSortTest) {
 }
 
 //Small Vector
-TEST(SmallQuick, QuickSortTest) {
+TEST(QuickSortTest, SmallQuick) {
     vector<int> vec(10);
     iota(vec.begin(), vec.end(), 1);
     vector<int> sorted_vec = vec;
@@ -57,7 +57,7 @@ TEST(SmallQuick, QuickSortTest) {
 }
 
 //Negative Vector
-TEST(NegativeQuick, QuickSortTest) {
+TEST(QuickSortTest, NegativeQuick) {
     vector<int> vec(1000000);
     for (int i = 0; i < vec.size(); i++) { vec[i] = i - 500000; }
     vector<int> sorted_vec = vec;
@@ -72,7 +72,7 @@ TEST(NegativeQuick, QuickSortTest) {
 }
 
 //Partially Sorted
-TEST(PartialQuick, QuickSortTest) {
+TEST(QuickSortTest, PartialQuick) {
     vector<int> vec(1000000);
     iota(vec.begin(), vec.end(), 1);
     vector<int> sorted_vec = vec;
