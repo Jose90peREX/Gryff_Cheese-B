@@ -2,3 +2,5 @@
 a.out
 tests.out
 input_tester
+*.gcno
+*.gcda

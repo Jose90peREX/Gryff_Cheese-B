@@ -1,5 +1,5 @@
 #include "csv_file.h"
-
+#include <algorithm>
 #include <fstream>
 #include <sstream>
 #include <iostream>

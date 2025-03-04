@@ -17,4 +17,5 @@ optimized:
 
 .PHONY: test
 test:
-	g++ -std=c++20 -O3 -I gtest/include -I gtest $(GTEST_SRC) $(TEST_SRC) -o input_tester
+	g++ -std=c++20 -O3 -I gtest/include -I gtest $(GTEST_SRC) $(TEST_SRC) -o input_tester \
+		-lgtest -lgtest_main -lpthread
