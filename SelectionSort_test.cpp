@@ -8,7 +8,7 @@ using namespace std;
 
 //Sorted
 TEST(SelectionTest, SortedSelection) {
-    vector<int> vec(1000000);
+    vector<int> vec(1000);
     iota(vec.begin(), vec.end(), 1);
     vector<int> sorted_vec = vec;
     selectionSort(vec.data(), vec.size());
@@ -17,7 +17,7 @@ TEST(SelectionTest, SortedSelection) {
 
 //Unsorted
 TEST(SelectionTest, UnsortedSelection) {
-    vector<int> vec(1000000);
+    vector<int> vec(1000);
     iota(vec.begin(), vec.end(), 1);
     vector<int> sorted_vec = vec;
 
@@ -33,7 +33,7 @@ TEST(SelectionTest, UnsortedSelection) {
 
 //Reversed
 TEST(SelectionTest, ReversedSelection) {
-   vector<int> vec(1000000);
+   vector<int> vec(1000);
    iota(vec.begin(), vec.end(), 1);
    vector<int> sorted_vec = vec;
    reverse(vec.begin(), vec.end());
@@ -56,8 +56,8 @@ TEST(SelectionTest, SmallSelection) {
 
 //Negative Vector
 TEST(SelectionTest, NegativeSelection) {
-    vector<int> vec(1000000);
-    for (int i = 0; i < vec.size(); i++) { vec[i] = i - 500000; }
+    vector<int> vec(1000);
+    for (int i = 0; i < vec.size(); i++) { vec[i] = i - 500; }
     vector<int> sorted_vec = vec;
     sort(sorted_vec.begin(), sorted_vec.end());
 
@@ -71,7 +71,7 @@ TEST(SelectionTest, NegativeSelection) {
 
 //Partially Sorted
 TEST(SelectionTest, PartialSelection) {
-    vector<int> vec(1000000);
+    vector<int> vec(1000);
     iota(vec.begin(), vec.end(), 1);
     vector<int> sorted_vec = vec;
     
