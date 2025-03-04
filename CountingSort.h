@@ -4,6 +4,9 @@ using namespace std;
 
 /*Function that performs counting sort on a given array*/
 void countSort(int arr[], int size) {
+	if (size == 0) {
+		return;
+	}
     int max = arr[0];
 
     //finding maximum
